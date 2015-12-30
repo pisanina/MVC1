@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MVCTutorial.SlowTest.PageObjects;
 using NUnit.Core;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -15,11 +14,12 @@ namespace MVCTutorial.SlowTest
     [TestFixture]
     class TestyOgloszenia
     {
-     
+
+      
         [Test]
         public void SearchAdd()
         {
-           
+
 
             IWebDriver driver = new FirefoxDriver();
             driver.Navigate().GoToUrl("http://localhost:6487/");
@@ -34,7 +34,7 @@ namespace MVCTutorial.SlowTest
             query = driver.FindElement(By.Id("szukaj"));
             query.Click();
             query = driver.FindElement(By.TagName("td"));
-            Assert.AreEqual(query.Text,"Nasze pierwsze ogloszenie1");
+            Assert.AreEqual(query.Text, "Nasze pierwsze ogloszenie1");
             driver.Quit();
         }
 
@@ -42,27 +42,31 @@ namespace MVCTutorial.SlowTest
         [Test]
         public void AdAdd()
         {
-            void logowanie();
+            IWebDriver driver = new FirefoxDriver();
+            TestyLogowanie Login = new TestyLogowanie();
+            Login.Login(driver);
             
-            
-            
-            
-            IWebElement query = driver.FindElement(By.Id("create"));
-            query.Click();
-            
-            
-           /* query = driver.FindElement(By.Id("Tytul"));
-            query.SendKeys("Nowe ogloszenie");
-            query = driver.FindElement(By.Id("Opis"));
-            query.SendKeys("To czego tak dlugo szukales");
-            query = driver.FindElement(By.Id("Cena"));
-            query.SendKeys("99000");
-            query = driver.FindElement(By.Id("Create"));
-            query.Click();
-            * 
-            query = driver.FindElement(By.TagName("td"));
-            Assert.AreEqual(query.Text, "Nasze pierwsze ogloszenie1"); */
+
+            driver.FindElement(By.Id("create")).Click();
+            driver.FindElement(By.Id("Tytul")).SendKeys("Nowe ogloszenie");
+            driver.FindElement(By.Id("Opis")).SendKeys("To czego tak dlugo szukales");
+            driver.FindElement(By.Id("Cena")).SendKeys("99000");
+            driver.FindElement(By.Id("Create")).Click();
+            driver.FindElement(By.TagName("td"));
             driver.Quit();
         }
-    
+
+     /*   public void Login(IWebDriver driver)
+        {
+         
+            driver.Navigate().GoToUrl("http://localhost:6487/");
+            driver.FindElement(By.Id("loginLink")).Click();
+            driver.FindElement(By.Id("UserName")).SendKeys("kz");
+            driver.FindElement(By.Id("Password")).SendKeys("kzkzkz");
+            driver.FindElement(By.Id("LoginSubmit")).Click();
+            driver.FindElement(By.Id("logoutForm"));
+
+        } */
+    }
 }
+

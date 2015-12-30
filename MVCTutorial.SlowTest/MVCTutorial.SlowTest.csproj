@@ -72,18 +72,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseTest.cs" />
     <Compile Include="Constans.cs" />
-    <Compile Include="Logowanie.cs" />
-    <Compile Include="PageObjectFactory.cs" />
-    <Compile Include="PageObjects\ABasePageObject.cs" />
-    <Compile Include="PageObjects\HomePageObject.cs" />
-    <Compile Include="PageObjects\IHomePageObject.cs" />
-    <Compile Include="PageObjects\ILoginPageObject.cs" />
-    <Compile Include="PageObjects\IPageObject.cs" />
-    <Compile Include="PageObjects\LoginPageObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Przyklad.cs" />
+    <Compile Include="TestyLogowanie.cs" />
     <Compile Include="TestyOgloszenia.cs" />
   </ItemGroup>
   <ItemGroup>
