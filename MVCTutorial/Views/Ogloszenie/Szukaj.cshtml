@@ -1,0 +1,69 @@
+﻿@model MVCTutorial.Models.OgloszenieSzukajViewModel
+
+@{
+    ViewBag.Title = "Szukaj";
+}
+
+<h2>Szukaj</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>OgloszenieSzukajViewModel</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Tytul)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Tytul)
+            @Html.ValidationMessageFor(model => model.Tytul)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Opis)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Opis)
+            @Html.ValidationMessageFor(model => model.Opis)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SprzedajacyID, "Sprzedajacy")
+        </div>
+        <div class="editor-field">
+            @*Html.DropDownList("SprzedajacyID", String.Empty)*@
+            @Html.DropDownList("SprzedajacyID", (SelectList)ViewBag.ListaSprzedajacych)
+            @Html.ValidationMessageFor(model => model.SprzedajacyID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CenaOd)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CenaOd)
+            @Html.ValidationMessageFor(model => model.CenaOd)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CenaDo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CenaDo)
+            @Html.ValidationMessageFor(model => model.CenaDo)
+        </div>
+
+        <p>
+            <input type="submit" value="Szukaj" id="szukaj"/>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

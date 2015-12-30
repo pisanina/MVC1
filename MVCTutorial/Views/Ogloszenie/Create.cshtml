@@ -1,0 +1,50 @@
+﻿@model MVCTutorial.Ogloszenie
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Ogloszenie</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Tytul)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Tytul)
+            @Html.ValidationMessageFor(model => model.Tytul)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Opis)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Opis)
+            @Html.ValidationMessageFor(model => model.Opis)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Cena)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Cena)
+            @Html.ValidationMessageFor(model => model.Cena)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" id="Create"/>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
